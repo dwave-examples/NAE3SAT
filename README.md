@@ -49,6 +49,8 @@ To run the example:
 python nae3sat_example.py
 ```
 
+The code saves the resulting graphics under a `plots` folder.
+
 ## Code Overview
 
 The code reformulates NAE3SAT instances as Ising problems, embeds these onto the
