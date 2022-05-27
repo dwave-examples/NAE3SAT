@@ -1,8 +1,36 @@
-# Not-all-equal 3-satisfiability (NAE3SAT)
+# Not-All-Equal 3-Satisfiability (NAE3SAT)
 
-NAE3SAT is an NP-complete boolean satisfiability problem. A problem is formulated by generating clauses of three variables (or variable negations), and requiring that the three elements are not equal to each other (ie. all configurations except `000` and `111` are valid).
+NAE3SAT is an [NP-complete](https://en.wikipedia.org/wiki/NP-completeness)
+Boolean satisfiability (SAT) problem that has clauses of three literals each and
+requires that for every clause the literals are not all equal to each other; i.e.,
+all configurations except `-1, -1, -1` and `+1, +1, +1` (for spin-valued variables,
+or `0,0,0` and `1, 1, 1` for binary-valued variables) are valid.
 
-In this example we explore the process of solving these type of satisfiability instances with two different generations of D-Wave QPUs: A Pegasus-topology Advantage system, and our newly released Zephyr-topology Advantage2_prototype. In particular, we will cover the Ising formulation of NAE3SAT instances, the process of embedding them into the QPU graphs, and the analysis of the solution quality obtained from both QPUs.
+---
+**SAT Terminology:**
+
+The [SAT problem](https://en.wikipedia.org/wiki/Boolean_satisfiability_problem)
+problem is to decide whether the literals in its clauses can be assigned values
+that satisfy all the clauses; i.e., produce a value of :math:`1`. In CNF, the SAT
+is satisfied only if all its clauses are satisfied.
+
+ * *Literal* is a Boolean variable such as `x` and its negation, NOT `x`.
+ * *Clause* is a disjunction of literals such as `x` OR `y`.
+ * *conjunctive normal form (CNF)* conjoins clauses by the AND operator; i.e.,
+   (clause 1) AND (clause 2) AND (clause 3).
+
+---
+
+This example explores the process of solving these type of satisfiability
+instances with two different generations of D-Wave quantum computers:
+
+* A Pegasus-topology Advantage system
+* An experimental prototype of a Zephyr-topology quantum processing unit (QPU)
+  for the next-generation Advantage2 system currently under development.
+
+The solution process includes reformulating NAE3SAT instances as Ising problems,
+embedding these onto the QPU graphs, and analyzing the solution quality obtained
+from both QPUs.
 
 # Usage
 
@@ -48,7 +76,7 @@ NAE3SAT problems are known to transition from the satisfiable to the unsatisfiab
 
 Both the Pegasus and Zephyr topology have native graph triangles that allow embedding individual clauses directly (without chains). Nevertheless, a full problem typically includes interactions between variables that are not natively provided by the graph. This requires us to minor-embed the problems onto the QPU.
 
-Here we minor-embed the problems into the two topologies using the `minorminer` heuristic in D-Wave Ocean. Below we show the distribution of chain lengths in the embeddings of a $\rho=3.0$. 
+Here we minor-embed the problems into the two topologies using the `minorminer` heuristic in D-Wave Ocean. Below we show the distribution of chain lengths in the embeddings of a $\rho=3.0$.
 
 ![](/readme_images/rho_300_chain_length.png)
 
@@ -61,7 +89,3 @@ Below we show the solution quality of 100 samples from a $\rho=3.0$ problem.
 ![](/readme_images/rho_300_energies.png)
 
 We see that Advantage2_prototype tends to obtain lower energy samples than Advantage.
-
-
-
-
