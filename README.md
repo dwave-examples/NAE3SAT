@@ -11,8 +11,8 @@ or `0,0,0` and `1, 1, 1` for binary-valued variables) are valid.
 
 The [SAT problem](https://en.wikipedia.org/wiki/Boolean_satisfiability_problem)
 problem is to decide whether the literals in its clauses can be assigned values
-that satisfy all the clauses; i.e., produce a value of :math:`1`. In CNF, the SAT
-is satisfied only if all its clauses are satisfied.
+that satisfy all the clauses. In CNF, the SAT is satisfied only if all its
+clauses are satisfied.
 
  * *Literal* is a Boolean variable such as `x` and its negation, NOT `x`.
  * *Clause* is a disjunction of literals such as `x` OR `y`.
@@ -21,16 +21,26 @@ is satisfied only if all its clauses are satisfied.
 
 ---
 
-This example explores the process of solving these type of satisfiability
-instances with two different generations of D-Wave quantum computers:
+This example explores solving this satisfiability problem with two different
+generations of D-Wave quantum computers:
 
-* A Pegasus-topology Advantage system
+* A Pegasus-[topology](https://docs.ocean.dwavesys.com/en/stable/concepts/topology.html)
+  Advantage system.
 * An experimental prototype of a Zephyr-topology quantum processing unit (QPU)
-  for the next-generation Advantage2 system currently under development.
+  for the Advantage2 next-generation system currently under development.
 
 The solution process includes reformulating NAE3SAT instances as Ising problems,
 embedding these onto the QPU graphs, and analyzing the solution quality obtained
 from both QPUs.
+
+## Installation
+
+You can run this example
+[in the Leap IDE](https://ide.dwavesys.io/#https://github.com/dwave-examples/NAE3SAT).
+
+Alternatively, install requirements locally (ideally, in a virtual environment):
+
+    pip install -r requirements.txt
 
 # Usage
 
