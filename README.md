@@ -100,7 +100,7 @@ typically include interactions between variables that are not natively connected
 and do require chains.
 
 The graphic below shows the distribution of chain lengths for a $\rho=3.0$ NAE3SAT
-problem minor-embedded into the two topologies using Ocean software's
+problem of 75 variables minor-embedded into the two topologies using Ocean software's
 [minorminer](https://docs.ocean.dwavesys.com/en/stable/docs_minorminer/source/sdk_index.html)
 heuristic.
 
