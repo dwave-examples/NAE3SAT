@@ -38,7 +38,7 @@ adv2p_sampler = DWaveSampler(solver=dict(topology__type="zephyr"))
 
 # Generate two NAE3SAT problems with clause-to-variable ratio rho 2.1 and 3.0
 for rho in rho_list:
-    print(f"making nae3sat problem with rho={rho} and N={num_variables}")
+    print(f"\nCreating an NAE3SAT problem with rho={rho} and N={num_variables}")
 
     num_clauses = round(num_variables * rho)
 
@@ -47,7 +47,7 @@ for rho in rho_list:
     for sampler in (adv_sampler, adv2p_sampler):
 
         # Find minor embedding
-        print(f"minor embedding problem into {sampler.solver.name}")
+        print(f"\Minor embedding problem into {sampler.solver.name}")
         embedding = minorminer.find_embedding(
             dimod.to_networkx_graph(bqm),
             sampler.to_networkx_graph())
@@ -78,6 +78,7 @@ for rho in rho_list:
             num_reads=100,
             auto_scale=False,
             answer_mode='raw',
+            label='Example - NAE3SAT',
         )
 
         # Plot energy distributions
@@ -88,3 +89,5 @@ for rho in rho_list:
         plt.title(f"$\\rho={rho}$, $N={num_variables}$")
         plt.legend()
         plt.savefig("./plots/rho_{}_energies.png".format(int(rho * 100)))
+
+print("\nResults saved under the plots folder.\n")
