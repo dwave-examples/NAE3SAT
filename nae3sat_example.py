@@ -59,7 +59,8 @@ for rho in rho_list:
             label=sampler.solver.name,
             alpha=0.7,
         )
-        plt.xlabel("Embedding chain length")
+        plt.xlabel("Embedding Chain Length")
+        plt.ylabel("Count")
         plt.title(f"$\\rho={rho}$, $N={num_variables}$")
         plt.legend()
         plt.savefig(f"./plots/rho_{int(rho * 100)}_chain_length.png")
@@ -83,6 +84,7 @@ for rho in rho_list:
         plt.figure(rho * 100 + 1)
         plt.hist(sampleset.record.energy, label=sampler.solver.name, alpha=0.7)
         plt.xlabel("Energy")
+        plt.ylabel("Count")
         plt.title(f"$\\rho={rho}$, $N={num_variables}$")
         plt.legend()
         plt.savefig("./plots/rho_{}_energies.png".format(int(rho * 100)))
