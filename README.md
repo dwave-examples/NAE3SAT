@@ -3,8 +3,8 @@
 NAE3SAT is an [NP-complete](https://en.wikipedia.org/wiki/NP-completeness)
 Boolean satisfiability (SAT) problem that has clauses of three literals each and
 requires that for every clause the literals are not all equal to each other; i.e.,
-all configurations except `-1, -1, -1` and `+1, +1, +1` (for spin-valued variables,
-or `0,0,0` and `1, 1, 1` for binary-valued variables) are valid.
+all configurations except {$-1, -1, -1$} and {$+1, +1, +1$} (for spin-valued
+variables, or {$0,0,0$} and {$1, 1, 1$} for binary-valued variables) are valid.
 
 ---
 **SAT Terminology:**
@@ -14,10 +14,10 @@ problem is to decide whether the literals in its clauses can be assigned values
 that satisfy all the clauses. In CNF, the SAT is satisfied only if all its
 clauses are satisfied.
 
- * *Literal* is a Boolean variable such as `x` and its negation, NOT `x`.
- * *Clause* is a disjunction of literals such as `x` OR `y`.
+ * *Literal* is a Boolean variable such as $x$ and its negation, $\bar x$.
+ * *Clause* is a disjunction of literals such as $x_0 \vee x_1$.
  * *conjunctive normal form (CNF)* conjoins clauses by the AND operator; i.e.,
-   (clause 1) AND (clause 2) AND (clause 3).
+   (clause 1) $\wedge$ (clause 2) $\wedge$ (clause 3).
 
 ---
 
@@ -106,14 +106,18 @@ heuristic.
 
 ![](/readme_images/rho_300_chain_length.png)
 
-Note that the Zephyr topology of Advantage2_prototype has a greater connectivity than the Pegasus topology of Advantage. This allows minor-embedding problems more compactly (with shorter chains) in Advantage2_prototype. More compact embeddings typically improve the success of Quantum Annealing computations.
+The Zephyr topology of the Advantage2 prototype has a greater connectivity than
+the Pegasus topology of Advantage. This allows for the minor-embedding of problems
+more compactly (with shorter chains) in the Advantage2 prototype. More compact
+embeddings typically improve the success of quantum-annealing computations.
 
-**Note:** The data in this document was generated with this code example, but results will slightly vary from run to run.
+Note that the data displayed above was generated for a particular execution of
+this code example; results will slightly vary from run to run.
 
 ## Solution quality
 
-Below we show the solution quality of 100 samples from a $\rho=3.0$ problem.
+The graphic below shows the solution quality of 100 samples from a $\rho=3.0$ problem.
 
 ![](/readme_images/rho_300_energies.png)
 
-We see that Advantage2_prototype tends to obtain lower energy samples than Advantage.
+The Advantage2 prototype tends to obtain lower energy samples than Advantage.
