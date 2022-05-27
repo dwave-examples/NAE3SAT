@@ -1,1 +1,0 @@
-from utilities.nae3sat_generator import *

@@ -1,3 +1,17 @@
+# Copyright 2022 D-Wave Systems Inc.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License");
+#    you may not use this file except in compliance with the License.
+#    You may obtain a copy of the License at
+#
+#        http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS,
+#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#    See the License for the specific language governing permissions and
+#    limitations under the License.
+
 import os
 import subprocess
 import sys
@@ -16,15 +30,7 @@ class TestDemo(unittest.TestCase):
         if os.getenv('DEBUG_OUTPUT'):
             print("Example output \n" + output)
 
-        for solver_name in "Adv", "Adv2_proto":
-            with self.subTest(msg=f"Verify if output contains 'minor embedding problem into {solver_name}' \n"):
-                self.assertIn(f'minor embedding problem into {solver_name}'.upper(), output)
-            with self.subTest(msg=f"Verify if output contains 'sending problem to {solver_name}' \n"):
-                self.assertIn(f'sending problem to {solver_name}'.upper(), output)    
-            with self.subTest(msg="Verify if error string contains in output \n"):
-                self.assertNotIn("ERROR", output)
-            with self.subTest(msg="Verify if warning string contains in output \n"):
-                self.assertNotIn("WARNING", output)
-
-if __name__ == '__main__':
-    unittest.main()
+        with self.subTest(msg="Verify if error string contains in output \n"):
+            self.assertNotIn("ERROR", output)
+        with self.subTest(msg="Verify if warning string contains in output \n"):
+            self.assertNotIn("WARNING", output)
