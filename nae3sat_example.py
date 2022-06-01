@@ -28,7 +28,7 @@ num_variables = 75
 rho_list = [2.1, 3.0]  # the clause-to-variable ratio
 
 # Create directory for plots
-os.makedirs(os.path.join(os.path.dirname(__file__), 'plots'), exist_ok=True)
+os.makedirs(os.path.join(os.path.dirname(__file__), "plots"), exist_ok=True)
 
 # Get an Advantage sampler
 adv_sampler = DWaveSampler(solver=dict(topology__type="pegasus"))
@@ -49,15 +49,17 @@ for rho in rho_list:
         # Find minor embedding
         print(f"minor embedding problem into {sampler.solver.name}")
         embedding = minorminer.find_embedding(
-            dimod.to_networkx_graph(bqm),
-            sampler.to_networkx_graph())
+            dimod.to_networkx_graph(bqm), sampler.to_networkx_graph()
+        )
 
         # Plot chain length distributions
+        chain_lengths = [len(chain) for q, chain in embedding.items()]
         plt.figure(rho * 100)
         plt.hist(
-            [len(chain) for q, chain in embedding.items()],
+            chain_lengths,
             label=sampler.solver.name,
             alpha=0.7,
+            bins=max(chain_lengths) - min(chain_lengths),
         )
         plt.xlabel("Embedding Chain Length")
         plt.ylabel("Count")
@@ -77,12 +79,16 @@ for rho in rho_list:
             chain_strength=3,
             num_reads=100,
             auto_scale=False,
-            answer_mode='raw',
         )
 
         # Plot energy distributions
         plt.figure(rho * 100 + 1)
-        plt.hist(sampleset.record.energy, label=sampler.solver.name, alpha=0.7)
+        plt.hist(
+            sampleset.record.energy,
+            weights=sampleset.record.num_occurrences,
+            label=sampler.solver.name,
+            alpha=0.7,
+        )
         plt.xlabel("Energy")
         plt.ylabel("Count")
         plt.title(f"$\\rho={rho}$, $N={num_variables}$")
