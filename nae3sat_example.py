@@ -47,7 +47,7 @@ for rho in rho_list:
     for sampler in (adv_sampler, adv2p_sampler):
 
         # Find minor embedding
-        print(f"\Minor embedding problem into {sampler.solver.name}")
+        print(f"\nMinor embedding problem into {sampler.solver.name}")
         embedding = minorminer.find_embedding(
             dimod.to_networkx_graph(bqm), sampler.to_networkx_graph()
         )
