@@ -68,7 +68,7 @@ for rho in rho_list:
         plt.savefig(f"./plots/rho_{int(rho * 100)}_chain_length.png")
 
         # Solve problem
-        print(f"sending problem to {sampler.solver.name}")
+        print(f"Sending problem to {sampler.solver.name}")
         sampleset = FixedEmbeddingComposite(
             ScaleComposite(sampler),
             embedding=embedding,
