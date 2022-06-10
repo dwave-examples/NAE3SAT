@@ -126,7 +126,7 @@ lower energy than that of the Advantage QPU. Lower energies mean better solution
 ---
 **Note:** The data displayed in the graphics above was generated for a
 particular execution of this code example; results will slightly vary from run
-to run.
+to run. For more consistent results, one should increase the number of samples or the number of calls.
 
 ---
 
