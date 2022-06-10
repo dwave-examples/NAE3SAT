@@ -55,21 +55,25 @@ for rho in rho_list:
 
         # Plot chain length distributions
         chain_lengths = [len(chain) for q, chain in embedding.items()]
-        plt.figure(rho * 100)
+        plt.figure(rho * 100, figsize=(9, 4))
         _, _, bar = plt.hist(
             chain_lengths,
             label=sampler.solver.name,
             alpha=0.7,
             bins=max(chain_lengths) - min(chain_lengths),
         )
-        plt.axvline(np.average(chain_lengths),
-                    linestyle='dashed', linewidth=1,
-                    color=bar[0].get_facecolor(),
-                    label=f'Mean, {sampler.solver.name}')
+        plt.axvline(
+            np.average(chain_lengths),
+            linestyle="dashed",
+            linewidth=1,
+            color=bar[0].get_facecolor(),
+            label=f"Mean, {sampler.solver.name}",
+        )
         plt.xlabel("Embedding Chain Length")
         plt.ylabel("Count")
         plt.title(f"$\\rho={rho}$, $N={num_variables}$")
-        plt.legend()
+        plt.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+        plt.tight_layout()
         plt.savefig(f"./plots/rho_{int(rho * 100)}_chain_length.png")
 
         # Solve problem
@@ -84,26 +88,31 @@ for rho in rho_list:
             chain_strength=3,
             num_reads=100,
             auto_scale=False,
-            label='Example - NAE3SAT',
+            label="Example - NAE3SAT",
         )
 
         # Plot energy distributions
-        plt.figure(rho * 100 + 1)
+        plt.figure(rho * 100 + 1, figsize=(9, 4))
         _, _, bar = plt.hist(
             sampleset.record.energy,
             weights=sampleset.record.num_occurrences,
             label=sampler.solver.name,
             alpha=0.7,
         )
-        plt.axvline(np.average(sampleset.record.energy,
-                               weights=sampleset.record.num_occurrences),
-                    linestyle='dashed', linewidth=1,
-                    color=bar[0].get_facecolor(),
-                    label=f'Mean, {sampler.solver.name}')
+        plt.axvline(
+            np.average(
+                sampleset.record.energy, weights=sampleset.record.num_occurrences
+            ),
+            linestyle="dashed",
+            linewidth=1,
+            color=bar[0].get_facecolor(),
+            label=f"Mean, {sampler.solver.name}",
+        )
         plt.xlabel("Energy")
         plt.ylabel("Count")
         plt.title(f"$\\rho={rho}$, $N={num_variables}$")
-        plt.legend()
+        plt.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+        plt.tight_layout()
         plt.savefig("./plots/rho_{}_energies.png".format(int(rho * 100)))
 
 print("\nResults saved under the plots folder.\n")
