@@ -124,9 +124,8 @@ The distribution of samples obtained by the Advantage2 prototype tends to have
 lower energy than that of the Advantage QPU. Lower energies mean better solutions.
 
 ---
-**Note:** The data displayed in the graphics above was generated for a
-particular execution of this code example; results will slightly vary from run
-to run. For more consistent results, one should increase the number of samples or the number of calls.
+**Note:** The data displayed in the graphics above was generated for a particular execution of this code example; results will slightly vary from run to run. If you wish to experiment further to get more consistent results, you can increase the number of samples or the number of calls (keep in mind these runs will consume your solver access time at the standard rate).
+
 
 ---
 
