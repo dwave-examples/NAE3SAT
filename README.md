@@ -81,7 +81,7 @@ valid not-all-equal configurations have a lower energy than the all-equal ones. 
 
 Negated variables are represented by a
 [spin-reverse transform](https://docs.dwavesys.com/docs/latest/handbook_qpu.html)
-of such variables. For example, a clause with $\bar{s_1}$, the negation of $s_1$,
+of such variables. For example, a clause with `-s1`, the negation of `s1`,
 is represented by the Ising Hamiltonian,
 
 `H(s0, -s1, s2) = -s0*s1 - s1*s2 + s0*s2`.
@@ -116,7 +116,7 @@ embeddings with shorter chains) of problems in the Advantage2 prototype, which i
 
 ### Solution Analysis
 
-The graphic below shows the solution quality of 100 samples from a $\rho=3.0$ problem.
+The graphic below shows the solution quality of 100 samples from a `ρ=3.0` problem.
 
 ![](/readme_images/rho_300_energies.png)
 
